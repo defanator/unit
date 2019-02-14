@@ -38,6 +38,7 @@ include Makefile.go19
 include Makefile.go110
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc
 endif
 
 # Ubuntu 17.10

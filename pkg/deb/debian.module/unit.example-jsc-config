@@ -1,0 +1,14 @@
+{
+	"applications": {
+		"example_java": {
+			"type": "java",
+			"webapp": "/usr/share/doc/unit-java/examples/java-app"
+		}
+	},
+
+	"listeners": {
+		"*:8800": {
+			"application": "example_java"
+		}
+	}
+}
