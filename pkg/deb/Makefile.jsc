@@ -7,8 +7,8 @@ MODULE_VERSION_jsc=	$(VERSION)
 MODULE_RELEASE_jsc=	1
 
 MODULE_CONFARGS_jsc=	java
-MODULE_MAKEARGS_jsc=	jsc
-MODULE_INSTARGS_jsc=	jsc-install
+MODULE_MAKEARGS_jsc=	java
+MODULE_INSTARGS_jsc=	java-install
 
 MODULE_SOURCES_jsc=	unit.example-jsc-app \
 			unit.example-jsc-config
