@@ -1,8 +1,9 @@
 {
 	"applications": {
 		"example_java": {
+			"processes": 1,
 			"type": "java",
-			"webapp": "/usr/share/doc/unit-java/examples/java-app"
+			"webapp": "/usr/share/doc/unit-jsc/examples/jsc-app"
 		}
 	},
 

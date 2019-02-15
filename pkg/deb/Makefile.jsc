@@ -21,7 +21,7 @@ MODULE_DEPENDS_jsc=,default-jre
 
 define MODULE_PREINSTALL_jsc
 	mkdir -p debian/unit-jsc/usr/share/doc/unit-jsc/examples/jsc-app
-	install -m 644 -p debian/unit.example-jsc-app debian/unit-jsc/usr/share/doc/unit-jsc/examples/jsc-app/let-my-people.jsc
+	install -m 644 -p debian/unit.example-jsc-app debian/unit-jsc/usr/share/doc/unit-jsc/examples/jsc-app/index.jsp
 	install -m 644 -p debian/unit.example-jsc-config debian/unit-jsc/usr/share/doc/unit-jsc/examples/unit.config
 	find debian/unit-jsc/ -type f -name "*.jar" -exec chmod 644 {} \\\\;
 endef
@@ -35,7 +35,10 @@ The $(MODULE_SUMMARY_jsc) has been installed.
 
 To check out the sample app, run these commands:
 
-  TBD
+ sudo service unit restart
+ cd /usr/share/doc/unit-$(MODULE_SUFFIX_jsc)/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8800/
 
 Online documentation is available at https://unit.nginx.org
 
