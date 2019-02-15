@@ -23,7 +23,6 @@ define MODULE_PREINSTALL_jsc
 	mkdir -p debian/unit-jsc/usr/share/doc/unit-jsc/examples/jsc-app
 	install -m 644 -p debian/unit.example-jsc-app debian/unit-jsc/usr/share/doc/unit-jsc/examples/jsc-app/index.jsp
 	install -m 644 -p debian/unit.example-jsc-config debian/unit-jsc/usr/share/doc/unit-jsc/examples/unit.config
-	find debian/unit-jsc/ -type f -name "*.jar" -exec chmod 644 {} \\\\;
 endef
 export MODULE_PREINSTALL_jsc
 
