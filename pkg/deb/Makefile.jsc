@@ -6,7 +6,7 @@ MODULE_SUMMARY_jsc=	Java module for NGINX Unit
 MODULE_VERSION_jsc=	$(VERSION)
 MODULE_RELEASE_jsc=	1
 
-MODULE_CONFARGS_jsc=	java
+MODULE_CONFARGS_jsc=	java --jars=/usr/share/unit-jsc/
 MODULE_MAKEARGS_jsc=	java
 MODULE_INSTARGS_jsc=	java-install
 
