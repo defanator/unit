@@ -105,6 +105,8 @@ endif
 include Makefile.go
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc8
+include Makefile.jsc11
 endif
 
 CONFIGURE_ARGS=\
