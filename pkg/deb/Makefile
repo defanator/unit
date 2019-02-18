@@ -94,6 +94,7 @@ include Makefile.go17
 include Makefile.go18
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc8
 endif
 
 # Debian 8
