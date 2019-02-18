@@ -8,9 +8,9 @@ DEFAULT_RELEASE := 1
 VERSION ?= $(DEFAULT_VERSION)
 RELEASE ?= $(DEFAULT_RELEASE)
 
-ifeq ($(shell rpm --eval "%{?rhel}"), 6)
+ifeq ($(shell test `rpm --eval '0%{?rhel} -eq 6 -a 0%{?amzn} -eq 0'`; echo $$?), 0)
 OSVER = centos6
-else ifeq ($(shell rpm --eval "%{?rhel}"), 7)
+else ifeq ($(shell test `rpm --eval '%{?rhel} -eq 7 -a 0%{?amzn} -eq 0'`; echo $$?), 0)
 OSVER = centos7
 else ifeq ($(shell rpm --eval "%{?amzn}"), 1)
 OSVER = amazonlinux1
@@ -53,7 +53,7 @@ include Makefile.go
 include Makefile.jsc8
 endif
 
-ifneq (,$(findstring $(OSVER),centos7 amazonlinux2))
+ifeq ($(OSVER), centos7)
 include Makefile.php
 include Makefile.python
 include Makefile.go
@@ -68,6 +68,14 @@ include Makefile.python27
 include Makefile.python34
 include Makefile.python35
 include Makefile.python36
+include Makefile.go
+include Makefile.perl
+include Makefile.jsc8
+endif
+
+ifeq ($(OSVER), amazonlinux2)
+include Makefile.php
+include Makefile.python
 include Makefile.go
 include Makefile.perl
 include Makefile.jsc8
