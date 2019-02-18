@@ -50,6 +50,7 @@ ifeq ($(OSVER), centos6)
 include Makefile.php
 include Makefile.python
 include Makefile.go
+include Makefile.jsc8
 endif
 
 ifneq (,$(findstring $(OSVER),centos7 amazonlinux2))
