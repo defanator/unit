@@ -70,6 +70,7 @@ include Makefile.python35
 include Makefile.python36
 include Makefile.go
 include Makefile.perl
+include Makefile.jsc8
 endif
 
 ifeq ($(OSVER), opensuse-leap)
