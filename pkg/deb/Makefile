@@ -72,6 +72,8 @@ include Makefile.python35
 include Makefile.go
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc8
+include Makefile.jsc9
 endif
 
 # Ubuntu 14.04
