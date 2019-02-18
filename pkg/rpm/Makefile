@@ -57,7 +57,8 @@ include Makefile.php
 include Makefile.python
 include Makefile.go
 include Makefile.perl
-include Makefile.jsc
+include Makefile.jsc8
+include Makefile.jsc11
 endif
 
 ifeq ($(OSVER), amazonlinux1)
