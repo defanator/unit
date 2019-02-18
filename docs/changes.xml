@@ -5,13 +5,39 @@
 <change_log title="unit">
 
 
-<changes apply="unit-jsc" ver="1.8" rev="1"
-         date="2019-02-14" time="14:00:00 +0300"
+<changes apply="unit-jsc8" ver="1.8" rev="1"
+         date="2019-02-18" time="12:00:00 +0300"
          packager="Andrei Belov &lt;defan@nginx.com&gt;">
 
 <change>
 <para>
-Initial release of Java module for NGINX Unit.
+Initial release of Java 8 module for NGINX Unit.
+</para>
+</change>
+
+</changes>
+
+
+<changes apply="unit-jsc10" ver="1.8" rev="1"
+         date="2019-02-18" time="12:00:00 +0300"
+         packager="Andrei Belov &lt;defan@nginx.com&gt;">
+
+<change>
+<para>
+Initial release of Java 10 module for NGINX Unit.
+</para>
+</change>
+
+</changes>
+
+
+<changes apply="unit-jsc11" ver="1.8" rev="1"
+         date="2019-02-18" time="12:00:00 +0300"
+         packager="Andrei Belov &lt;defan@nginx.com&gt;">
+
+<change>
+<para>
+Initial release of Java 11 module for NGINX Unit.
 </para>
 </change>
 
