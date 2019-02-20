@@ -50,6 +50,7 @@ ifeq ($(OSVER), centos6)
 include Makefile.php
 include Makefile.python
 include Makefile.go
+include Makefile.jsc-common
 include Makefile.jsc8
 endif
 
@@ -58,6 +59,7 @@ include Makefile.php
 include Makefile.python
 include Makefile.go
 include Makefile.perl
+include Makefile.jsc-common
 include Makefile.jsc8
 include Makefile.jsc11
 endif
@@ -70,6 +72,7 @@ include Makefile.python35
 include Makefile.python36
 include Makefile.go
 include Makefile.perl
+include Makefile.jsc-common
 include Makefile.jsc8
 endif
 
@@ -78,6 +81,7 @@ include Makefile.php
 include Makefile.python
 include Makefile.go
 include Makefile.perl
+include Makefile.jsc-common
 include Makefile.jsc8
 endif
 
