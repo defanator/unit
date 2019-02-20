@@ -5,6 +5,19 @@
 <change_log title="unit">
 
 
+<changes apply="unit-jsc-common" ver="1.8" rev="1"
+         date="2019-02-20" time="16:00:00 +0300"
+         packager="Andrei Belov &lt;defan@nginx.com&gt;">
+
+<change>
+<para>
+Initial release of Java common packages for NGINX Unit.
+</para>
+</change>
+
+</changes>
+
+
 <changes apply="unit-jsc8" ver="1.8" rev="1"
          date="2019-02-18" time="12:00:00 +0300"
          packager="Andrei Belov &lt;defan@nginx.com&gt;">

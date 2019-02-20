@@ -84,6 +84,7 @@ DESTDIR=%{buildroot} make %%MODULE_INSTARGS%%
 %{__rm} -f build
 %{__ln_s} build-nodebug build
 DESTDIR=%{buildroot} make %%MODULE_INSTARGS%%
+%%MODULE_POSTINSTALL%%
 
 %check
 %{__rm} -rf %{buildroot}/usr/src

@@ -6,7 +6,7 @@ MODULE_SUMMARY_jsc11=	Java 11 module for NGINX Unit
 MODULE_VERSION_jsc11=	$(VERSION)
 MODULE_RELEASE_jsc11=	1
 
-MODULE_CONFARGS_jsc11=	java --module=java11 --home=/usr/lib/jvm/java-11 --jars=/usr/share/unit-jsc11/
+MODULE_CONFARGS_jsc11=	java --module=java11 --home=/usr/lib/jvm/java-11 --jars=/usr/share/unit-jsc-common/
 MODULE_MAKEARGS_jsc11=	java11
 MODULE_INSTARGS_jsc11=	java11-install
 
@@ -15,6 +15,11 @@ MODULE_SOURCES_jsc11=	unit.example-jsc-app \
 
 BUILD_DEPENDS_jsc11=	java-11-openjdk-devel
 BUILD_DEPENDS+=		$(BUILD_DEPENDS_jsc11)
+
+define MODULE_DEFINITIONS_jsc11
+Requires: unit-jsc-common == $(MODULE_VERSION_jsc_common)-$(MODULE_RELEASE_jsc_common)%{?dist}.ngx
+endef
+export MODULE_DEFINITIONS_jsc11
 
 define MODULE_PREINSTALL_jsc11
 %{__mkdir} -p %{buildroot}%{_datadir}/doc/unit-jsc11/examples/jsc-app
@@ -25,11 +30,17 @@ define MODULE_PREINSTALL_jsc11
 endef
 export MODULE_PREINSTALL_jsc11
 
+define MODULE_POSTINSTALL_jsc11
+DESTDIR=%{buildroot} make java-shared-uninstall
+endef
+export MODULE_POSTINSTALL_jsc11
+
 define MODULE_FILES_jsc11
 %{_libdir}/unit/modules/*
 %{_libdir}/unit/debug-modules/*
-%dir %{_datadir}/unit-jsc11
-%{_datadir}/unit-jsc11/*
+%dir %{_datadir}/doc/unit-jsc11
+%{_datadir}/doc/unit-jsc11/*
+%{_datadir}/unit-jsc-common/*
 endef
 export MODULE_FILES_jsc11
 

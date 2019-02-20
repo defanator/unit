@@ -115,6 +115,7 @@ endif
 include Makefile.go
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc-common
 include Makefile.jsc8
 include Makefile.jsc11
 endif
@@ -206,9 +207,10 @@ rpmbuild/SPECS/unit-%.spec: unit.module.spec.in ../../docs/changes.xml | rpmbuil
 		sources="$${sources}\n$${s}" ; \
 		i=$$(($${i}+1)) ; \
 	done ; \
-	pkgname=$(shell echo $@ | cut -d '/' -f 3 | cut -d '.' -f 1) ; \
+	pkgname=$(shell echo $@ | cut -d '/' -f 3 | tr '_' '-' | cut -d '.' -f 1) ; \
 	definitions=`echo "$$MODULE_DEFINITIONS_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	preinstall=`echo "$$MODULE_PREINSTALL_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
+	postinstall=`echo "$$MODULE_POSTINSTALL_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	files=`echo "$$MODULE_FILES_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	post=`echo "$$MODULE_POST_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	cat unit.module.spec.in | sed \
@@ -225,6 +227,7 @@ rpmbuild/SPECS/unit-%.spec: unit.module.spec.in ../../docs/changes.xml | rpmbuil
 		-e "s#%%MODULE_INSTARGS%%#$(MODULE_INSTARGS_$*)#g" \
 		-e "s#%%MODULE_DEFINITIONS%%#$${definitions}#g" \
 		-e "s#%%MODULE_PREINSTALL%%#$${preinstall}#g" \
+		-e "s#%%MODULE_POSTINSTALL%%#$${postinstall}#g" \
 		-e "s#%%MODULE_FILES%%#$${files}#g" \
 		-e "s#%%MODULE_POST%%#$${post}#g" \
 		> $@.tmp ; \
@@ -236,9 +239,9 @@ rpmbuild/SPECS/unit-%.spec: unit.module.spec.in ../../docs/changes.xml | rpmbuil
 	mv $@.tmp $@ 
 
 unit-%: check-build-depends-% rpmbuild/SPECS/unit-%.spec rpmbuild/SOURCES/unit-$(VERSION).tar.gz
-	@echo "===> Building $@ package" ; \
+	@echo "===> Building $(subst _,-,$@) package" ; \
 	rpmbuild -D "_topdir `pwd`/rpmbuild" -ba rpmbuild/SPECS/$@.spec && \
-	ln -s rpmbuild/BUILD/$@-$(VERSION)/build $@
+	ln -s rpmbuild/BUILD/$(subst _,-,$@)-$(VERSION)/build $(subst _,-,$@)
 
 test: unit modules
 	@{ \
