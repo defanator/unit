@@ -245,7 +245,7 @@ rpmbuild/SPECS/unit-%.spec: unit.module.spec.in ../../docs/changes.xml | rpmbuil
 unit-%: check-build-depends-% rpmbuild/SPECS/unit-%.spec rpmbuild/SOURCES/unit-$(VERSION).tar.gz
 	@echo "===> Building $(subst _,-,$@) package" ; \
 	rpmbuild -D "_topdir `pwd`/rpmbuild" -ba rpmbuild/SPECS/$@.spec && \
-	ln -s rpmbuild/BUILD/$(subst _,-,$@)-$(VERSION)/build $(subst _,-,$@)
+	ln -s rpmbuild/BUILD/$(subst _,-,$@)-$(VERSION)/build $@
 
 test: unit modules
 	@{ \
