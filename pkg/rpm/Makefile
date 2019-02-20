@@ -249,7 +249,7 @@ unit-%: check-build-depends-% rpmbuild/SPECS/unit-%.spec rpmbuild/SOURCES/unit-$
 
 test: unit modules
 	@{ \
-	for so in `find rpmbuild/BUILD/*/build-nodebug/ -type f -name "*.so"`; do \
+	for so in `find rpmbuild/BUILD/*/build-nodebug/ -type f \( -name "*.so" -o -name "*.jar" \)`; do \
 		soname=`basename $${so}` ; \
 		test -h rpmbuild/BUILD/unit-$(VERSION)/build-nodebug/$${soname} || \
 		ln -fs `pwd`/$${so} rpmbuild/BUILD/unit-$(VERSION)/build-nodebug/$${soname} ; \
@@ -259,7 +259,7 @@ test: unit modules
 
 test-debug: unit modules
 	@{ \
-	for so in `find rpmbuild/BUILD/*/build-debug/ -type f -name "*.so"`; do \
+	for so in `find rpmbuild/BUILD/*/build-debug/ -type f \( -name "*.so" -o -name "*.jar" \)`; do \
 		soname=`basename $${so}` ; \
 		test -h rpmbuild/BUILD/unit-$(VERSION)/build-debug/$${soname} || \
 		ln -fs `pwd`/$${so} rpmbuild/BUILD/unit-$(VERSION)/build-debug/$${soname} ; \
