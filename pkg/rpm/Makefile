@@ -10,7 +10,7 @@ RELEASE ?= $(DEFAULT_RELEASE)
 
 ifeq ($(shell test `rpm --eval '0%{?rhel} -eq 6 -a 0%{?amzn} -eq 0'`; echo $$?), 0)
 OSVER = centos6
-else ifeq ($(shell test `rpm --eval '%{?rhel} -eq 7 -a 0%{?amzn} -eq 0'`; echo $$?), 0)
+else ifeq ($(shell test `rpm --eval '0%{?rhel} -eq 7 -a 0%{?amzn} -eq 0'`; echo $$?), 0)
 OSVER = centos7
 else ifeq ($(shell rpm --eval "%{?amzn}"), 1)
 OSVER = amazonlinux1
