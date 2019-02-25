@@ -6,7 +6,7 @@ MODULE_SUMMARY_jsc10=	Java 10 module for NGINX Unit
 MODULE_VERSION_jsc10=	$(VERSION)
 MODULE_RELEASE_jsc10=	1
 
-MODULE_CONFARGS_jsc10=	java --module=java10 --home=/usr/lib/jvm/java-11-openjdk-amd64 --jars=/usr/share/unit-jsc10/
+MODULE_CONFARGS_jsc10=	java --module=java10 --home=/usr/lib/jvm/java-11-openjdk-amd64 --jars=/usr/share/unit-jsc-common/
 MODULE_MAKEARGS_jsc10=	java10
 MODULE_INSTARGS_jsc10=	java10-install
 
@@ -17,7 +17,7 @@ BUILD_DEPENDS_jsc10=	openjdk-11-jdk-headless openjdk-11-jre-headless
 BUILD_DEPENDS+=		$(BUILD_DEPENDS_jsc10)
 
 MODULE_BUILD_DEPENDS_jsc10=,openjdk-11-jdk-headless
-MODULE_DEPENDS_jsc10=,openjdk-11-jre-headless
+MODULE_DEPENDS_jsc10=,openjdk-11-jre-headless,unit-jsc-common (= $(MODULE_VERSION_jsc_common)-$(MODULE_RELEASE_jsc_common)~$(CODENAME))
 
 define MODULE_PREINSTALL_jsc10
 	mkdir -p debian/unit-jsc10/usr/share/doc/unit-jsc10/examples/jsc-app
@@ -25,6 +25,12 @@ define MODULE_PREINSTALL_jsc10
 	install -m 644 -p debian/unit.example-jsc10-config debian/unit-jsc10/usr/share/doc/unit-jsc10/examples/unit.config
 endef
 export MODULE_PREINSTALL_jsc10
+
+define MODULE_POSTINSTALL_jsc10
+	cd $$\(BUILDDIR_unit\) \&\& \
+        DESTDIR=$$\(INSTALLDIR\) make java-shared-uninstall
+endef
+export MODULE_POSTINSTALL_jsc10
 
 define MODULE_POST_jsc10
 cat <<BANNER

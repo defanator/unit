@@ -221,6 +221,7 @@ endif
 	definitions=`echo "$$MODULE_DEFINITIONS_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	prebuild=`echo "$$MODULE_PREBUILD_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	preinstall=`echo "$$MODULE_PREINSTALL_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
+	postinstall=`echo "$$MODULE_POSTINSTALL_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	post=`echo "$$MODULE_POST_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	cat debian.module/$(if $(MODULE_NOARCH_$*),control-noarch.in,control.in) | sed \
                 -e "s#%%NAME%%#unit-$(MODULE_SUFFIX_$*)#g" \
@@ -245,6 +246,7 @@ endif
                 -e "s#%%MODULE_DEFINITIONS%%#$${definitions}#g" \
                 -e "s#%%MODULE_PREBUILD%%#$${prebuild}#g" \
                 -e "s#%%MODULE_PREINSTALL%%#$${preinstall}#g" \
+                -e "s#%%MODULE_POSTINSTALL%%#$${postinstall}#g" \
         > $@/$(SRCDIR)/debian/rules ; \
         cat debian.module/preinst.in | sed \
                 -e "s#%%MODULE_POST%%#$$post#g" \
