@@ -6,7 +6,7 @@ MODULE_SUMMARY_jsc_common=	Java shared packages for NGINX Unit
 MODULE_VERSION_jsc_common=	$(VERSION)
 MODULE_RELEASE_jsc_common=	1
 
-MODULE_CONFARGS_jsc_common=	java --home=/usr/lib/jvm/java-8-openjdk-amd64 --jars=/usr/share/unit-jsc-common/
+MODULE_CONFARGS_jsc_common=	java --home=/usr/lib/jvm/java-8-openjdk-$$\(DEB_HOST_ARCH\) --jars=/usr/share/unit-jsc-common/
 MODULE_MAKEARGS_jsc_common=	java
 MODULE_INSTARGS_jsc_common=	java-shared-install
 
