@@ -262,8 +262,9 @@ unit-%: check-build-depends-% | debuild-%
 
 test: unit modules
 	@{ \
-	for so in `find debuild-*/unit-$(VERSION)/debian/build-unit/ -type f -name "*.so"` ; do \
+	for so in `find debuild-*/unit-$(VERSION)/debian/build-unit/ -type f \( -name "*.so" -o -name "*.jar" \)`; do \
 		soname=`basename $${so}` ; \
+		test "$${soname}" = "java.unit.so" && continue ; \
 		test -h debuild/unit-$(VERSION)/debian/build-unit/build/$${soname} || \
 		ln -fs `pwd`/$${so} debuild/unit-$(VERSION)/debian/build-unit/build/$${soname} ; \
 	done ; \
@@ -272,8 +273,9 @@ test: unit modules
 
 test-debug: unit modules
 	@{ \
-	for so in `find debuild-*/unit-$(VERSION)/debian/build-unit-debug/ -type f -name "*.so"` ; do \
+	for so in `find debuild-*/unit-$(VERSION)/debian/build-unit-debug/ -type f \( -name "*.so" -o -name "*.jar" \)`; do \
 		soname=`basename $${so}` ; \
+		test "$${soname}" = "java.unit.so" && continue ; \
 		test -h debuild/unit-$(VERSION)/debian/build-unit-debug/build/$${soname} || \
 		ln -fs `pwd`/$${so} debuild/unit-$(VERSION)/debian/build-unit-debug/build/$${soname} ; \
 	done ; \
