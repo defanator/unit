@@ -27,6 +27,7 @@ include Makefile.go19
 include Makefile.go110
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc-common
 include Makefile.jsc8
 include Makefile.jsc11
 endif
@@ -40,6 +41,7 @@ include Makefile.go19
 include Makefile.go110
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc-common
 include Makefile.jsc8
 include Makefile.jsc10
 endif
@@ -74,6 +76,7 @@ include Makefile.python35
 include Makefile.go
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc-common
 include Makefile.jsc8
 include Makefile.jsc9
 endif
@@ -94,6 +97,7 @@ include Makefile.go17
 include Makefile.go18
 include Makefile.perl
 include Makefile.ruby
+include Makefile.jsc-common
 include Makefile.jsc8
 endif
 
@@ -218,7 +222,7 @@ endif
 	prebuild=`echo "$$MODULE_PREBUILD_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	preinstall=`echo "$$MODULE_PREINSTALL_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
 	post=`echo "$$MODULE_POST_$*" | sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/\$$CR/g"` ; \
-	cat debian.module/control.in | sed \
+	cat debian.module/$(if $(MODULE_NOARCH_$*),control-noarch.in,control.in) | sed \
                 -e "s#%%NAME%%#unit-$(MODULE_SUFFIX_$*)#g" \
                 -e "s#%%SUMMARY%%#$(MODULE_SUMMARY_$*)#g" \
                 -e "s#%%CODENAME%%#$(CODENAME)#g" \
@@ -229,7 +233,7 @@ endif
                 -e "s#%%MODULE_BUILD_DEPENDS%%#$(MODULE_BUILD_DEPENDS_$*)#g" \
                 -e "s#%%MODULE_DEPENDS%%#$(MODULE_DEPENDS_$*)#g" \
         > $@/$(SRCDIR)/debian/control ; \
-        cat debian.module/rules.in | sed \
+        cat debian.module/$(if $(MODULE_NOARCH_$*),rules-noarch.in,rules.in) | sed \
                 -e "s#%%NAME%%#unit-$(MODULE_SUFFIX_$*)#g" \
                 -e "s#%%CODENAME%%#$(CODENAME)#g" \
                 -e "s#%%UNIT_VERSION%%#$(VERSION)#g" \
