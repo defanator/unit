@@ -31,19 +31,6 @@ Initial release of Java 8 module for NGINX Unit.
 </changes>
 
 
-<changes apply="unit-jsc9" ver="1.8" rev="1"
-         date="2019-02-18" time="12:00:00 +0300"
-         packager="Andrei Belov &lt;defan@nginx.com&gt;">
-
-<change>
-<para>
-Initial release of Java 9 module for NGINX Unit.
-</para>
-</change>
-
-</changes>
-
-
 <changes apply="unit-jsc10" ver="1.8" rev="1"
          date="2019-02-18" time="12:00:00 +0300"
          packager="Andrei Belov &lt;defan@nginx.com&gt;">
