@@ -26,6 +26,7 @@ config.env.%:
 	cp -Pa $(CURDIR)/configure $(BUILDDIR_$*)/
 	cp -Pa $(CURDIR)/src $(BUILDDIR_$*)/
 	cp -Pa $(CURDIR)/test $(BUILDDIR_$*)/
+	cp -Pa $(CURDIR)/version $(BUILDDIR_$*)/
 	touch $@
 
 configure.unit: config.env.unit
