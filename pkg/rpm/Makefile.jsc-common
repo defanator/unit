@@ -10,6 +10,8 @@ MODULE_CONFARGS_jsc_common=	java --home=/usr/lib/jvm/java-1.8.0 --jars=/usr/shar
 MODULE_MAKEARGS_jsc_common=	java
 MODULE_INSTARGS_jsc_common=	java-shared-install
 
+MODULE_SOURCES_jsc_common=	COPYRIGHT.unit-jsc-common
+
 BUILD_DEPENDS_jsc_common=	java-1.8.0-openjdk-devel
 BUILD_DEPENDS+=		$(BUILD_DEPENDS_jsc_common)
 
@@ -29,7 +31,9 @@ cat <<BANNER
 ----------------------------------------------------------------------
 
 The $(MODULE_SUMMARY_jsc_common) have been installed.
-Please find licenses and related information at: TBD.
+
+Please find licenses and related information here:
+  /usr/share/doc/unit-jsc-common/COPYRIGHT
 
 ----------------------------------------------------------------------
 BANNER

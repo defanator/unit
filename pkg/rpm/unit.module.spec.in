@@ -72,8 +72,13 @@ make %%MODULE_MAKEARGS%%
 %install
 %{__rm} -rf %{buildroot}
 %{__mkdir} -p %{buildroot}%{_datadir}/doc/%%NAME%%
+if [ `basename %{SOURCE100}` == COPYRIGHT.%{name} ]; then
+%{__install} -m 644 -p %{SOURCE100} \
+    %{buildroot}%{_datadir}/doc/%%NAME%%/COPYRIGHT
+else
 %{__install} -m 644 -p NOTICE \
     %{buildroot}%{_datadir}/doc/%%NAME%%/COPYRIGHT
+fi
 %%MODULE_PREINSTALL%%
 %{__ln_s} build-debug build
 DESTDIR=%{buildroot} make %%MODULE_INSTARGS%%
