@@ -15,7 +15,6 @@ BASEDIR = $(CURDIR)
 
 %%MODULE_DEFINITIONS%%
 
-
 config.env.%:
 	dh_testdir
 	mkdir -p $(BUILDDIR_$*)
