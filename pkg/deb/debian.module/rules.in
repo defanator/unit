@@ -15,6 +15,7 @@ BASEDIR = $(CURDIR)
 
 %%MODULE_DEFINITIONS%%
 
+
 config.env.%:
 	dh_testdir
 	mkdir -p $(BUILDDIR_$*)
@@ -23,6 +24,10 @@ config.env.%:
 	cp -Pa $(CURDIR)/src $(BUILDDIR_$*)/
 	cp -Pa $(CURDIR)/test $(BUILDDIR_$*)/
 	cp -Pa $(CURDIR)/version $(BUILDDIR_$*)/
+	cp -Pa $(CURDIR)/CHANGES $(BUILDDIR_$*)/
+	cp -Pa $(CURDIR)/LICENSE $(BUILDDIR_$*)/
+	cp -Pa $(CURDIR)/NOTICE $(BUILDDIR_$*)/
+	cp -Pa $(CURDIR)/README $(BUILDDIR_$*)/
 	touch $@
 
 configure.unit: config.env.unit
