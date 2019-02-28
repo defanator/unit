@@ -210,7 +210,11 @@ else
 		-e "s#%%CODENAME%%#$(CODENAME)#g" \
 		> $@/$(SRCDIR)/debian/changelog
 endif
-	cp debian/copyright debuild-$*/$(SRCDIR)/debian/
+	if [ -f debian.module/copyright.unit-$(MODULE_SUFFIX_$*) ]; then \
+		cp debian.module/copyright.unit-$(MODULE_SUFFIX_$*) debuild-$*/$(SRCDIR)/debian/copyright ; \
+	else \
+		cp debian/copyright debuild-$*/$(SRCDIR)/debian/ ; \
+	fi
 	@{ \
 	set -e ; \
 	for src in $(MODULE_SOURCES_$*); do \
